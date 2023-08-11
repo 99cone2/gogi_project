@@ -36,6 +36,12 @@ input[type="text"], input[type="password"], textarea{
 ::-webkit-input-placeholder { /* Chrome, Safari, Opera */
     font-size: 15px;
 }
+.greylist:hover {
+	background-color: #FF5E00;
+	border: solid 2px white;
+	color: white;
+}
+
 </style>
 </head>
 <body>

@@ -50,10 +50,10 @@
 }
 
 .greylist:hover {
-	background-color: #6CC148;
+		background-color: #FF5E00;
 	border: solid 2px white;
 	color: white;
-}
+} 
 
 .greylist a {
 	text-decoration-line: none;
@@ -118,6 +118,9 @@
 ::-webkit-input-placeholder { /* Chrome, Safari, Opera */
 	font-size: 15px;
 }
+ 
+
+ 
 </style>
 
 </head>

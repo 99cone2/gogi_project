@@ -12,7 +12,13 @@
 <head>
 <meta charset="UTF-8">
 <link href="${contextPath}/resources/css/noticeList.css" rel="stylesheet" type="text/css">
-
+<style type="text/css">
+.org{
+background-color: #FF5E00;
+}
+.greylist:hover {
+	background-color: #FF5E00;}
+</style>
 <title>Insert title here</title>
 </head>
 <body>

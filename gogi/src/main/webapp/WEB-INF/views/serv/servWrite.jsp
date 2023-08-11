@@ -61,6 +61,12 @@ h1 {
 	color: white;
 }
 
+.greylist:hover {
+	background-color: #FF5E00;
+	border: solid 2px white;
+	color: white;
+}
+
 .greylist a {
 	text-decoration-line: none;
 	text-decoration: none;

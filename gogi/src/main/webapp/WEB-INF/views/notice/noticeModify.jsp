@@ -52,7 +52,7 @@
 }
 
 .greylist:hover {
-	background-color: #6CC148;
+	background-color: #FF5E00;
 	border: solid 2px white;
 	color: white;
 }

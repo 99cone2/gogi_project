@@ -7,6 +7,10 @@
 <meta charset="UTF-8"> 
 <link href="${contextPath}/resources/css/noticeRead.css" rel="stylesheet" type="text/css">
 <title>게시물 조회</title>
+<style type="text/css">
+.greylist:hover {
+		background-color: #FF5E00;
+} </style>
 </head>
 <body>
 

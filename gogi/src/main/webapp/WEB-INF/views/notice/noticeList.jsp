@@ -21,7 +21,8 @@
 .org{
 background-color: #FF5E00;
 }
-
+.greylist:hover {
+	background-color: #FF5E00;}
 </style>
 </head>
 <body>
@@ -136,11 +137,11 @@ background-color: #FF5E00;
 					</colgroup>
 					<thead>
 						<tr>
-							<th class="center tw fg">번호</th>
-							<th class="center tw fg">제목</th>
-							<th class="center tw fg">작성일</th>
-							<th class="center tw fg">작성자</th>
-							<th class="center tw fg">조회수</th>
+							<th class="center tw fg org">번호</th>
+							<th class="center tw fg org">제목</th>
+							<th class="center tw fg org">작성일</th>
+							<th class="center tw fg org">작성자</th>
+							<th class="center tw fg org">조회수</th>
 						</tr>
 					</thead>
 

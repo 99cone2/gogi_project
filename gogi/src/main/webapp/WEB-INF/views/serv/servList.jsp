@@ -29,6 +29,13 @@
 	text-align: center;/* 0802 오동림 수정 */
 	margin-top: 35px;/* 0802 오동림 수정 */
 }
+ 
+.org{
+background-color: #FF5E00;
+}
+.greylist:hover {
+	background-color: #FF5E00;}
+ 
 </style>
 </head>
 <body>
@@ -47,11 +54,11 @@
 					</colgroup>
 					<thead>
 						<tr style="height: 45px;">
-							<th class="center tw fg" style="vertical-align: middle;">번호</th>
-							<th class="center tw fg" style="vertical-align: middle;">제목</th>
-							<th class="center tw fg" style="vertical-align: middle;">작성일</th>
-							<th class="center tw fg" style="vertical-align: middle;">작성자</th>
-							<th class="center tw fg" style="vertical-align: middle;">조회수</th>
+							<th class="center tw fg org" style="vertical-align: middle;">번호</th>
+							<th class="center tw fg org" style="vertical-align: middle;">제목</th>
+							<th class="center tw fg org" style="vertical-align: middle;">작성일</th>
+							<th class="center tw fg org" style="vertical-align: middle;">작성자</th>
+							<th class="center tw fg org" style="vertical-align: middle;">조회수</th>
 						</tr>
 					</thead>
 
