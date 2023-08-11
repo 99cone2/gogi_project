@@ -15,7 +15,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700;800&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+<style type="text/css">
  
+
+</style>
 </head>
 <title>배송 안내</title>
 
@@ -55,9 +58,9 @@
 					<input id="member_addr" type="text" placeholder="주소" readonly>
 					<input type="button" id="member_btn" value="검색"
 						onclick="findAddr()">
-					<!-- c:if 사용 불가: 동적인 조거부 블록은 서버 측에서 실행되기 떄문에  JavaScript랑 같이 사용 불가 -> script 사용해 조건부로 표기해야함 -->
+					<!-- c:if 적용시 에러-> script 사용해 조건부로 표기함 -->
 					<div id="delivery_message" style="display: none;">
-						<p id="dv_w_p">배달 가능 지역입니다.</p>
+						<p id="dv_w_p" class="forg">배달 가능 지역입니다.</p>
 					</div>
 				</div>
 			</div>
@@ -84,7 +87,7 @@
 					<div class="div_w"></div>
 					<div class="dv_c_d2">
 						<div class="span_dv">
-							<p   > 월~일 도착</p>
+							<p class="forg"  > 월~일 도착</p>
 						</div>
 						<ul>
 							<li>
@@ -113,7 +116,7 @@
 					<b class="tab_d_b">저녁에 주문하면 다음 날 아침 전에 도착!</b>
 					<div class="dv_c_d2">
 						<div class="span_dv">
-							<p  > 월~일 도착</p>
+							<p class="forg" > 월~일 도착</p>
 						</div>
 						<ul>
 							<li>
@@ -140,7 +143,7 @@
 					<b>캠핑장에서 원하는 고가를 즐길수 있도록 육룰이 달려갑니다.</b>
 					<div class="dv_c_d2">
 						<div class="span_dv">
-							<p  c > 월~일 도착</p>
+							<p class="forg" > 월~일 도착</p>
 						</div>
 						<ul>
 							<li>
@@ -168,6 +171,7 @@
 
 	<!-- 캠핑 주소 검색 관련 script -->
 	<script>
+	//
 		function findAddr() {
 			new daum.Postcode(
 					{
@@ -189,13 +193,14 @@
 						}
 					}).open();
 		}
+		//배달 가능 여부 확인 
 		function checkDeliveryAvailability(data) {
 			//배달 가능 여부를 확인하기 위한 로직을 추가할 때, 주소 정보에 접근하기 위해 data 객체를 사용할 수 있습니다.
 			//주소가 배달 가능한 경우 true를 반환
 			var deliveryAvailable = true; //배달 가능 
 			displayDeliveryMessage(deliveryAvailable);
 		}
-
+		//배달 가능 지역 알림 문구 관련
 		function displayDeliveryMessage(deliveryAvailable) {
 			var deliveryMessage = document.getElementById("delivery_message");
 			if (deliveryAvailable) {
@@ -207,7 +212,6 @@
 	</script>
 	<script
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js">
-		
 	</script>
 
 	<!--Tab 관련  -->
@@ -215,20 +219,20 @@
 		function deliveryOpen(evt, deliveryName) {
 			var i, tabcontent, tablinks;
 
-			// Get all elements with class="tabcontent" and hide them
+			// class="tabcontent"인거 숨기기
 			tabcontent = document.getElementsByClassName("tabcontent");
 			for (i = 0; i < tabcontent.length; i++) {
 				tabcontent[i].style.display = "none";
 			}
 
-			// Get all elements with class="tablinks" and remove the class "active"
+			// class="tablinks" 지우고 활성화
 			tablinks = document.getElementsByClassName("tablinks");
 			for (i = 0; i < tablinks.length; i++) {
 				tablinks[i].className = tablinks[i].className.replace(
 						" active", "");
 			}
 
-			// Show the current tab, and add an "active" class to the button that opened the tab
+			// 현재 탭을 보여주고, 열린 탭에  active 추가
 			document.getElementById(deliveryName).style.display = "block";
 			evt.currentTarget.className += " active";
 		}
