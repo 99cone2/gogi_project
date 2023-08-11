@@ -121,23 +121,6 @@ public class NoticeDAOImpl implements NoticeDAO {
 		 }
 
 	 
-	 
-		 
-		 //동림언니
-		 @Override
-			public List<NoticeVO> selectBoardList(Map<String, Object> paging) throws Exception {
-				return sql.selectList(namespace +".listPaging", paging);				
-			}
-	 
-		 @Override
-			public int boardCount() throws Exception {
-				return sql.selectOne(namespace +".totalBoard");
-			}
-	
-		 
-		 
-		 
-		 
 		 @Override
 		 // admin 확인 메서드 추가
 	    public boolean CheckAdmin(NoticeVO vo) {

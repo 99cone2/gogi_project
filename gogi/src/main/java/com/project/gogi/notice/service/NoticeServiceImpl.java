@@ -69,98 +69,64 @@ public class NoticeServiceImpl implements NoticeService {
 	 return dao.NoticeListCount();
 	}
 	
-	 //조회수
-	 @Override	    
-	 public void updateNoticeViewCnt(int notice_no) throws Exception {	      
-	 	dao. updateNoticeViewCnt(notice_no);	   
-	 }
+	//조회수
+	@Override	    
+	public void updateNoticeViewCnt(int notice_no) throws Exception {	      
+	 dao. updateNoticeViewCnt(notice_no);	   
+	}
 	 
 	 
 	 //FAQ~
-		//게시물 목록 +페이징
-		@Override
-		public List<NoticeVO> NoticeFAQList(Criteria2 cri2) throws Exception{
-			return dao.NoticeFAQList(cri2);
-		}
+	//게시물 목록 +페이징
+	@Override
+	public List<NoticeVO> NoticeFAQList(Criteria2 cri2) throws Exception{
+		return dao.NoticeFAQList(cri2);
+	}
 		
-		//작성
-		@Override
-		public void NoticeFAQWrite(NoticeVO vo) throws Exception {
-			dao.NoticeFAQWrite(vo);
-			
-		}
+	//작성
+	@Override
+	public void NoticeFAQWrite(NoticeVO vo) throws Exception {
+		dao.NoticeFAQWrite(vo);
+	}
 
-		//조회
-		@Override
-		public NoticeVO NoticeFAQRead(int notice_no_faq) throws Exception {
-			return dao.NoticeFAQRead(notice_no_faq);
-		}
+	//조회
+	@Override
+	public NoticeVO NoticeFAQRead(int notice_no_faq) throws Exception {
+		return dao.NoticeFAQRead(notice_no_faq);
+	}
 
-		//수정
-		@Override
-		public void NoticeFAQUpdate(NoticeVO vo) throws Exception {
-			dao.NoticeFAQUpdate(vo);
-		}
+	//수정
+	@Override
+	public void NoticeFAQUpdate(NoticeVO vo) throws Exception {
+		dao.NoticeFAQUpdate(vo);
+	}
 
+	//삭제
+	@Override
+	public void NoticeFAQDelete(int notice_no_faq) throws Exception {
+		dao.NoticeFAQDelete(notice_no_faq);
+	}
 		
-		//삭제
-		@Override
-		public void NoticeFAQDelete(int notice_no_faq) throws Exception {
-			dao.NoticeFAQDelete(notice_no_faq);
-		}
+	// 게시물 총 갯수
+	@Override
+	public int NoticeFAQListCount() throws Exception {
+		return dao.NoticeFAQListCount();
+	}
 		
-		// 게시물 총 갯수
-		@Override
-		public int NoticeFAQListCount() throws Exception {
-		 return dao.NoticeFAQListCount();
-		}
-		
-		 //조회수
-		 @Override	    
-		 public void updateNoticeFAQViewCnt(int notice_no_faq) throws Exception {	      
-		 	dao. updateNoticeFAQViewCnt(notice_no_faq);	   
-		 }
+	//조회수
+	@Override	    
+	public void updateNoticeFAQViewCnt(int notice_no_faq) throws Exception {	      
+		dao. updateNoticeFAQViewCnt(notice_no_faq);	   
+	}
 	 
-		 
-		 
-		 
-		 
-		 
-		 
-
-			@Override
-			public List<NoticeVO> listBoard(Map<String, Object> paging) throws Exception {
-				int section = (int) paging.get("section");
-				int pageNum = (int) paging.get("pageNum");
-				
-				paging.put("section", section);
-				paging.put("pageNum", pageNum);
-				
-				return dao.selectBoardList(paging);		
-			}
+	//관리자 확인	
+	@Override
+	// admin 확인 메서드 추가
+	public boolean CheckAdmin(NoticeVO vo) {
+	// vo를 사용하여 "mem_id"를 가져오거나 필요한 로직을 추가합니다.
+		String mem_id = vo.getMem_id();
+	// mem_id가 "admin"인지 확인하여 true 또는 false를 반환합니다.
+		return "admin".equals(mem_id);
+	}
 			
-			
-			@Override
-			public int boardCount() throws Exception {
-				return dao.boardCount();
-			}
-			
-			
-			
-			
-			@Override
-			 // admin 확인 메서드 추가
-		    public boolean CheckAdmin(NoticeVO vo) {
-		        // vo를 사용하여 "mem_id"를 가져오거나 필요한 로직을 추가합니다.
-		        String mem_id = vo.getMem_id();
-
-		        // mem_id가 "admin"인지 확인하여 true 또는 false를 반환합니다.
-		        return "admin".equals(mem_id);
-		    }
-			
-			
-			
-			
-			
-	
 }

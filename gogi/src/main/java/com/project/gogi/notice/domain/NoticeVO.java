@@ -6,31 +6,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class NoticeVO {
 
-//	 NOTICE_NO 	NUMBER	PRIMARY KEY,   
-//	    NOTICE_TITLE 	VARCHAR2(500)	NOT NULL,
-//	    NOTICE_CONTENT 	VARCHAR2(2000)	NOT NULL,
-//	    NOTICE_DATE 	date default sysdate null,
-//	    NOTICE_HITS 	NUMBER 	default 0,
-//	    MEM_ID 	VARCHAR2(20)	NOT NULL,
-//
-//	
- 
 	private int notice_no ;
 	private String  notice_title;
-	private String  notice_content; 	;
+	private String  notice_content; 	 
 	private String  mem_id;
 	private Date notice_date ;
 	private int notice_hits ;
-	
-//	
-//	
-//	  NOTICE_NO_FAQ 	NUMBER	PRIMARY KEY,   
-//	    NOTICE_TITLE 	VARCHAR2(500)	NOT NULL,
-//	    NOTICE_CONTENT_FAQ 	VARCHAR2(2000)	NOT NULL,
-//	    NOTICE_DATE 	date default sysdate null,
-//	    NOTICE_HITS 	NUMBER 	default 0,
-//	    MEM_ID 	VARCHAR2(20)	NOT NULL,
-
 	private int notice_no_faq;
 	private String notice_content_faq;
 	private String  notice_title_faq;
@@ -104,10 +85,5 @@ public class NoticeVO {
 	}
 	public void setNotice_hits_faq(int notice_hits_faq) {
 		this.notice_hits_faq = notice_hits_faq;
-	}
-	 
-	
-	
-	
-	
+	} 
 }
