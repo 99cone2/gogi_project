@@ -39,15 +39,13 @@ public interface ServDAO {
 	   //게시물 총 갯수 확인
 	    public int ServListCount() throws Exception;
 
+	   //조회수
+	   public void updateServViewCnt(int cust_serv_no) throws Exception;
 	    
-	    //조회수
-	    public void updateServViewCnt(int cust_serv_no) throws Exception;
-	    
-	    //공지사항 끝
+	   //공지사항 끝
  
-		public boolean CheckAdmin(ServVO vo)  throws Exception;
-		
-		public String getServPw(int cust_serv_no) throws Exception;
+	   public boolean CheckAdmin(ServVO vo)  throws Exception;
+	   public String getServPw(int cust_serv_no) throws Exception;
 		
 		//1:1문의 내역 조회
 		public List<ServVO> selectReviewList(String mem_id) throws Exception;

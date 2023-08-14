@@ -19,7 +19,6 @@ public class NoticeVO {
 	private int notice_hits_faq ;
 	
 	
-	
 	public int getNotice_no() {
 		return notice_no;
 	}

@@ -73,43 +73,42 @@ public class ServController extends BaseController{
   
 			logger.info("리스트 페이지 가져오기");
 			 
-			 	 List<ServVO> servList= new ArrayList<ServVO>();
-					 servList= servService.ServList(cri);
-					  // 서버에서 날짜를 원하는 형식("yyyy. M. d")으로 변환하여 Model에 추가
-                     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy. M. d");
-                     for (ServVO serv : servList) {
-                         serv.setCust_serv_dateStr(dateFormat.format(serv.getCust_serv_date()));
+			List<ServVO> servList= new ArrayList<ServVO>();
+			servList= servService.ServList(cri);
+			// 서버에서 날짜를 원하는 형식("yyyy. M. d")으로 변환하여 Model에 추가
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy. M. d");
+				for (ServVO serv : servList) {
+					serv.setCust_serv_dateStr(dateFormat.format(serv.getCust_serv_date()));
                      }   
-					 model.addAttribute("servList",servList);
+				model.addAttribute("servList",servList);
 					 
 					 
-					 //게시판 페이징   가져오기.
-					 PageMaker3 pageMaker= new PageMaker3();
-					 pageMaker.setCri(cri);
-					 pageMaker.setTotalCount(servService.ServListCount());
-					 model.addAttribute("pageMaker3",pageMaker); 
+			//게시판 페이징   가져오기.
+			PageMaker3 pageMaker= new PageMaker3();
+			pageMaker.setCri(cri);
+			pageMaker.setTotalCount(servService.ServListCount());
+			model.addAttribute("pageMaker3",pageMaker); 
 					 
-					 //8.1 추가 로그인 확인
-	                 Boolean isLogOn = (Boolean) httpSession.getAttribute("isLogon"); 
-	                 //로그인 상태만 읽기 가능하게 하기 
-	                   if (isLogOn != null && isLogOn) {
-	                       memberVO = (MemberVO) httpSession.getAttribute("memberInfo");
-	                       System.out.println("세션:" + memberVO);
-	                       String mem_id = memberVO.getMem_id();
-	                       System.out.println("멤버아이디" + mem_id);
-	                       System.out.println("로그인 여부: "+isLogOn);
-	                       model.addAttribute("mem_id",mem_id);
-	                       model.addAttribute("isLogOn", isLogOn);
-	                       System.out.println("확인중");
-	                   }		 
-					 
+			//8.1 추가 로그인 확인
+			Boolean isLogOn = (Boolean) httpSession.getAttribute("isLogon"); 
+			//로그인 상태만 읽기 가능하게 하기 
+			if (isLogOn != null && isLogOn) {
+				memberVO = (MemberVO) httpSession.getAttribute("memberInfo");
+				System.out.println("세션:" + memberVO);
+				String mem_id = memberVO.getMem_id();
+				System.out.println("멤버아이디" + mem_id);
+				System.out.println("로그인 여부: "+isLogOn);
+				model.addAttribute("mem_id",mem_id);
+				model.addAttribute("isLogOn", isLogOn);
+				System.out.println("확인중");
+			}		 
 			        return "serv/servList";
 		 
-		}
+			}
 		
  
 		
-		   // 게시물 작성 get
+		// 게시물 작성 get
 	    @RequestMapping(value = "/write.do", method = RequestMethod.GET) 
 	    public String getServWrite(HttpServletRequest request,Model model) throws Exception {
 	    	HttpSession session = request.getSession();
@@ -126,8 +125,6 @@ public class ServController extends BaseController{
 	              model.addAttribute("isLogOn", isLogOn);
 	              System.out.println("고객센터 글작성 아이디 확인"+ mem_id);
 	          }  // 추가 end
-	          
-			
 			
 	        return "serv/servWrite";
 	    }
@@ -153,7 +150,6 @@ public class ServController extends BaseController{
 	      
 	        // 다중 이미지 구현 중
 	        // 파일 업로드 후 반환된 파일 이름이 저장된 fileList에 다시 map에 저장
-	      
 	        
 	        HttpSession session = multipartRequest.getSession();
 			MemberVO memberVO = (MemberVO) session.getAttribute("memberInfo");
@@ -203,8 +199,6 @@ public class ServController extends BaseController{
 	        return "redirect:/serv/list.do";
 	    }
 	    
-	   	    
-	 
 	  
 		//게시물 조회 + 조회수 중복방지
 		@RequestMapping(value = "/read.do", method = RequestMethod.GET)

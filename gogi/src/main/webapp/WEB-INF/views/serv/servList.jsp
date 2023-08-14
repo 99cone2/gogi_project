@@ -74,9 +74,10 @@ background-color: #FF5E00;
 
 								<c:forEach var="servList" items="${servList}" varStatus="status">
 									<tr style="text-align: center;">
-										<td class="center fgl"><c:out value="${servList.cust_serv_no}" /></td>
+										<td class="center fgl">
+											<c:out value="${servList.cust_serv_no}" /></td>
 										<td class="left fgl">
-										  <c:if test="${servList.cust_serv_notice eq 1}">
+											  <c:if test="${servList.cust_serv_notice eq 1}">
                                     	<img src="${contextPath}/resources/images/serv/green-megaphone.png" width="30px" alt="new" />
                                        </c:if>
 										<c:if test="${servList.cust_serv_secret eq '1'}">
@@ -91,19 +92,16 @@ background-color: #FF5E00;
 													<c:otherwise>비밀글은 작성자와 관리자만 볼 수 있습니다.</c:otherwise>
 												</c:choose>
 											</c:if>
-											
 											 <c:if test="${servList.cust_serv_secret eq '0'}">
 												  <a href="${contextPath}/serv/read.do?cust_serv_no=${servList.cust_serv_no}">
 												  	<c:out value="${servList.cust_serv_title}"/>
 												  </a>
 											</c:if>
-											
 										</td>
 										<td class="center fgl"> 
 											<c:out value="${servList.cust_serv_dateStr}"/></td>
 										<td class="center fgl"><c:out value="${servList.mem_id}" /></td>
 										<td  class="center fgl"><c:out value="${servList.cust_serv_hits}" /></td>
-
 									</tr>
 								</c:forEach>
 							</c:otherwise>
