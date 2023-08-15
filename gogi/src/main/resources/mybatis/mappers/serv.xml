@@ -169,6 +169,5 @@
       #{cust_serv_no}
       ORDER BY cmt_number ASC
    </select>
-   
-   
+ 
    </mapper>
