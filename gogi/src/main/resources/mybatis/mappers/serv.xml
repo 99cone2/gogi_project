@@ -16,7 +16,7 @@
 		   <result property="originalFileName" column="originalFileName" />
 		   <result property="cust_serv_secret" column="cust_serv_secret" />
 	</resultMap>
-
+ 
 	<resultMap id="servImageResult" type="servImageFileVO">
 	   <result property="img_no" column="img_no" />
 	   <result property="img_name" column="img_name" />
