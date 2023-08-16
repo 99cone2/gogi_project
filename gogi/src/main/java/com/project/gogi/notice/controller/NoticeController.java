@@ -47,9 +47,9 @@ public class NoticeController {
 
 	//공지사항 목록+페이징+검색
 	@RequestMapping(value = "/list.do", method = RequestMethod.GET)
-	public String getNoticeList(@ModelAttribute("scri") SearchCriteria scri,Model model, Criteria cri, Criteria2 cri2, HttpServletRequest request, 
+	public String getNoticeList(@RequestParam("scri") SearchCriteria scri,Model model, Criteria cri, Criteria2 cri2, HttpServletRequest request, 
 	                            HttpServletResponse response) throws Exception {
-	    
+		 //@ModelAttribute("scri") SearchCriteria scri,
 	    //로그인 여부
 	    Boolean isLogOn = (Boolean) httpSession.getAttribute("isLogon");
 	    //로그인 상태 아니여도 공지사항 읽기 가능

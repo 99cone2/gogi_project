@@ -31,7 +31,7 @@ public interface NoticeService {
 	//조회수
 	public void updateNoticeViewCnt(int notice_no) throws Exception;
 
-	 //8.16
+	 //8.13
 	   //검색 결과 갯수
 	   public int countSearch(SearchCriteria scri) throws Exception;
 	//공지사항 끝

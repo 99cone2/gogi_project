@@ -81,6 +81,14 @@ public class NoticeDAOImpl implements NoticeDAO {
 			  return sql.selectList(namespace + ".noticeFAQList",cri2);
 			 }
 		
+		 //8.13
+		   //검색 결과 갯수
+		   public int countSearch(SearchCriteria scri) throws Exception{
+			   return sql.selectOne(namespace+".countSearch", scri);
+		   }
+		   
+		 
+		 
 		//작성
 		@Override
 		public void NoticeFAQWrite(NoticeVO vo) throws Exception {
@@ -133,11 +141,8 @@ public class NoticeDAOImpl implements NoticeDAO {
 	        return "admin".equals(mem_id);
 	    }
 		 
-		 //8.16
-		   //검색 결과 갯수
-		   public int countSearch(SearchCriteria scri) throws Exception{
-			   return sql.selectOne(namespace+".countSearch",scri);
-		   } 
+		 
+		   
 }
 		
 		
