@@ -18,6 +18,8 @@ import com.project.gogi.notice.dao.NoticeDAO;
 import com.project.gogi.notice.domain.Criteria;
 import com.project.gogi.notice.domain.Criteria2;
 import com.project.gogi.notice.domain.NoticeVO;
+import com.project.gogi.notice.domain.SearchCriteria;
+import com.project.gogi.serv.domain.SearchCriteria2;
 
 @Repository
 @Service
@@ -33,9 +35,14 @@ public class NoticeServiceImpl implements NoticeService {
 	
 	//게시물 목록 +페이징
 	@Override
-	public List<NoticeVO> NoticeList(Criteria cri) throws Exception{
-		return dao.NoticeList(cri);
+	public List<NoticeVO> NoticeList(SearchCriteria scri) throws Exception{
+		return dao.NoticeList(scri);
 	}
+	 //8.16
+	   //검색 결과 갯수
+	   public int countSearch(SearchCriteria scri) throws Exception{
+		   return dao.countSearch(scri);
+	   }
 	
 	//작성
 	@Override
@@ -74,6 +81,8 @@ public class NoticeServiceImpl implements NoticeService {
 	public void updateNoticeViewCnt(int notice_no) throws Exception {	      
 	 dao. updateNoticeViewCnt(notice_no);	   
 	}
+	
+
 	 
 	 
 	 //FAQ~

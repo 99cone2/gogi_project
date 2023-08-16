@@ -169,55 +169,7 @@ background-color: #FF5E00;
 			</div>
 
  
-			<!-- 페이징 -->
-<%-- 			<div class=" pageHTML">
-				<c:if test="${totalBoard != null }">
-					<c:set var="totalPage" value="${totalBoard/10 + 1}" />
-					<!-- 총 페이지 수 계산 -->
-					<c:set var="sectionSize" value="10" />
-					<!-- 섹션 크기 설정 -->
-
-					<c:choose>
-						<c:when test="${totalPage > 0}">
-
-							<c:set var="startPage" value="${(section-1)*sectionSize + 1}" />
-							<!-- 섹션의 시작 페이지 계산 -->
-							<c:set var="endPage" value="${startPage + sectionSize - 1}" />
-							<!-- 섹션의 끝 페이지 계산 -->
-
-							<!-- 이전 -->
-							<c:if test="${section > 1}">
-								<li class="page-item"><div class="pagingbtncolor"><a class="pagea fg "
-									href="${contextPath }/notice/list.do?section=${section-1}&pageNum=${startPage - 1}">&nbsp;
-										이전</a></div></li>
-							</c:if>
-
-							<!-- 페이지 링크 -->
-							<c:forEach var="page" begin="${startPage}" end="${endPage}"
-								step="1">
-								<c:if test="${page <= totalPage}">
-									<c:if test="${page == pageNum}">
-										<li class="page-item"><div class="pagingbtncolor"><a class="pagea fg "
-											href="${contextPath }/notice/list.do?section=${section}&pageNum=${page}">${page}</a></div></li>
-									</c:if>
-									<c:if test="${page != pageNum}">
-										<li class="page-item"><div class="pagingbtncolor"><a class="pagea fg "
-											href="${contextPath }/notice/list.do?section=${section}&pageNum=${page}">${page}</a></div></li>
-									</c:if>
-								</c:if>
-							</c:forEach>
-
-							<!-- 다음 -->
-							<c:if test="${section < totalPage/sectionSize}">
-								<li class="page-item"><div class="pagingbtncolor"><a class="pagea fg "
-									href="${contextPath }/notice/list.do?section=${section+1}&pageNum=${endPage + 1}">&nbsp;
-										다음</a></div></li>
-							</c:if>
-						</c:when>
-					</c:choose>
-				</c:if>
-			</div>
- --%>
+	 
 
 		</div>
 	</div>

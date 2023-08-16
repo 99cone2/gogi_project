@@ -11,6 +11,8 @@ import org.springframework.stereotype.Repository;
 import com.project.gogi.notice.domain.Criteria;
 import com.project.gogi.notice.domain.Criteria2;
 import com.project.gogi.notice.domain.NoticeVO;
+import com.project.gogi.notice.domain.SearchCriteria;
+
 
 @Repository
 public class NoticeDAOImpl implements NoticeDAO {
@@ -24,9 +26,9 @@ public class NoticeDAOImpl implements NoticeDAO {
 	
 	//게시물 목록 +페이징
 	 @Override
-	 public List<NoticeVO> NoticeList(Criteria cri) throws Exception { 
+	 public List<NoticeVO> NoticeList(SearchCriteria  scri) throws Exception { 
 		  
-		  return sql.selectList(namespace + ".noticeList",cri);
+		  return sql.selectList(namespace + ".noticeList",scri);
 		 }
 	
 	//작성
@@ -130,6 +132,12 @@ public class NoticeDAOImpl implements NoticeDAO {
 	        // mem_id가 "admin"인지 확인하여 true 또는 false를 반환합니다.
 	        return "admin".equals(mem_id);
 	    }
+		 
+		 //8.16
+		   //검색 결과 갯수
+		   public int countSearch(SearchCriteria scri) throws Exception{
+			   return sql.selectOne(namespace+".countSearch",scri);
+		   } 
 }
 		
 		

@@ -3,20 +3,43 @@
 <mapper namespace="mapper.notice">
  
    
-   <!-- 목록+페이징 :공지사항-->
-   <select id="noticeList" resultType="noticeVO"  parameterType="Criteria">
-    <![CDATA[
+   <!-- 8.16 -->
+  <sql id="search">
+      <if test="searchType != null">
+            <if test="searchType == 't'.toString()">notice_title like '%' || #{keyword} || '%'</if>
+            <if test="searchType == 'c'.toString()">notice_content like '%' || #{keyword} || '%'</if>
+            <if test="searchType == 'w'.toString()">mem_id like '%' || #{keyword} || '%'</if>
+            <if test="searchType == 'tc'.toString()">where (notice_title like '%' || #{keyword} || '%')
+				or (notice_content like '%' || #{keyword} || '%')</if>
+         </if>
+</sql>
+ 
+ 
+   
+   <!-- 목록+페이징+검색 :공지사항-->
+   <select id="noticeList" resultType="noticeVO"  parameterType="SearchCriteria">
     select notice_no, notice_title, notice_content, mem_id, notice_date, notice_hits
     from (
         select notice_no, notice_title, notice_content, mem_id, notice_date, notice_hits,
             row_number() over(order by notice_no desc) as rNum
-        from   GOGI_NOTICE_BOARD
-        ) mb
+        from   GOGI_NOTICE_BOARD   
+          <include refid="search"></include>
+          ) mb
     where rNum between  #{rowStart} and #{rowEnd}
         order by notice_no desc
-         ]]>
 </select>
- 
+
+<!-- 8.16 -->
+<select id="countSearch" resultType="int">
+ select count(notice_no)
+  from   GOGI_NOTICE_BOARD 
+   <include refid="search"></include>
+<![CDATA[
+   and notice_no > 0
+]]>
+</select>
+
+
  
    <!-- 공지사항:게시물 총 갯수 확인 - -->
 <!-- 번호만 있으면 확인 가능해 매개변수 타입 정수로 설정 -->

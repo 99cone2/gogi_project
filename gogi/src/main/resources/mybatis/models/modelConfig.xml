@@ -23,6 +23,8 @@
   	<typeAlias type="com.project.gogi.goods.vo.ReviewVO" alias="reviewVO" />
   	<typeAlias type="com.project.gogi.goods.vo.ReviewImageVO" alias="reviewImageVO" />
   	<typeAlias type="com.project.gogi.serv.domain.CommentVO" alias="CommentVO" />
+  	<typeAlias type="com.project.gogi.serv.domain.SearchCriteria2" alias="SearchCriteria2" />
+  	<typeAlias type="com.project.gogi.notice.domain.SearchCriteria" alias="SearchCriteria" />
 
   </typeAliases>
 </configuration>

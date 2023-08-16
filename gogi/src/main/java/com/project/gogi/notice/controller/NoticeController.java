@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,6 +26,7 @@ import com.project.gogi.notice.domain.Criteria;
 import com.project.gogi.notice.domain.Criteria2;
 import com.project.gogi.notice.domain.NoticeVO;
 import com.project.gogi.notice.domain.PageMaker;
+import com.project.gogi.notice.domain.SearchCriteria;
 import com.project.gogi.notice.service.NoticeService;
 
 @Controller
@@ -43,9 +45,9 @@ public class NoticeController {
 	@Autowired
 	private MemberVO memberVO;
 
-	//공지사항 목록
+	//공지사항 목록+페이징+검색
 	@RequestMapping(value = "/list.do", method = RequestMethod.GET)
-	public String getNoticeList(Model model, Criteria cri, Criteria2 cri2, HttpServletRequest request, 
+	public String getNoticeList(@ModelAttribute("scri") SearchCriteria scri,Model model, Criteria cri, Criteria2 cri2, HttpServletRequest request, 
 	                            HttpServletResponse response) throws Exception {
 	    
 	    //로그인 여부
@@ -62,20 +64,22 @@ public class NoticeController {
 	    }
 	    
 	    List<NoticeVO> noticeList = new ArrayList<NoticeVO>();
-	    noticeList=service.NoticeList(cri);
+	    noticeList=service.NoticeList(scri);
 	    
 	    List<NoticeVO> noticeFAQList = new ArrayList<NoticeVO>();
 	    noticeFAQList=service.NoticeFAQList(cri2);
 	    
 	    model.addAttribute("noticeList", noticeList);
+	    
 	    model.addAttribute("noticeFAQList", noticeFAQList);
 	 
 	  
 	    
 	    //공지사항 페이징 가져오기
 	    PageMaker pageMaker = new PageMaker();
-	    pageMaker.setCri(cri);
-	    pageMaker.setTotalCount(service.NoticeListCount());
+	    pageMaker.setCri(scri);
+	    //pageMaker.setTotalCount(service.NoticeListCount());
+	    pageMaker.setTotalCount(service.countSearch(scri));
 	    model.addAttribute("pageMaker", pageMaker);
 
 	    return "notice/noticeList";

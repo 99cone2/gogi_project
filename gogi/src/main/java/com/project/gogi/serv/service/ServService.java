@@ -48,6 +48,5 @@ public interface ServService {
 
 	void addReply(CommentVO commentVO) throws Exception;
 	
-	 
 
 }

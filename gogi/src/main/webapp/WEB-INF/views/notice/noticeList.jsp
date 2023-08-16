@@ -12,6 +12,8 @@
 <head>
 <meta charset="UTF-8">
 <link href="${contextPath}/resources/css/noticeList.css" rel="stylesheet" type="text/css">
+<!-- 제이쿼리 -->
+<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 <!-- 폰트:나눔산스 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -95,7 +97,7 @@ background-color: #FF5E00;
 					<c:if test="${pageMaker.prev}">
 						<li><div class="pagingbtncolor">
 								<a class="pagea fg "
-									href="${contextPath}/notice/list.do?page=${pageMaker.startPage - 1}">이전</a>
+									href="${contextPath}/notice/list.do?page=${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전</a>
 							</div></li>
 					</c:if>
 
@@ -103,18 +105,47 @@ background-color: #FF5E00;
 						end="${pageMaker.endPage}" var="idx">
 						<li><div class="pagingbtncolor">
 								<a class="pagea fg"
-									href="${contextPath}/notice/list.do?page=${idx}">${idx}</a>
+									href="${contextPath}/notice/list.do?page=${pageMaker.makeQuery(idx)}">${idx}</a>
 							</div></li>
 					</c:forEach>
 
 					<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 						<li><div class="pagingbtncolor">
 								<a class="pagea fg "
-									href="${contextPath}/notice/list.do?page=${pageMaker.endPage + 1}">다음</a>
+									href="${contextPath}/notice/list.do?page=${pageMaker.makeQuery(pageMaker.endPage + 1)}">다음</a>
 							</div></li>
 					</c:if>
 				</ul>
 			</div>
+
+			<!--8.16  -->
+			<div class="search">
+ 		<select name="searchType">
+ 			 <option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>
+ 			 <option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
+ 			 <option value="c"<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
+ 			 <option value="w"<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
+  			<option value="tc"<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
+ 		</select>
+ 
+		 <input type="text" name="keyword" id="keywordInput" value="${scri.keyword}"/>
+
+ 		<button id="searchBtn">검색</button>
+ 		 
+ <script>
+ $(function(){
+  $('#searchBtn').click(function() {
+   self.location = "noticeList"
+     + '${pageMaker.makeQuery(1)}'
+     + "&searchType="
+     + $("select option:selected").val()
+     + "&keyword="
+     + encodeURIComponent($('#keywordInput').val());
+    });
+ });   
+ </script>
+</div>
+
 
 		</div>
 
